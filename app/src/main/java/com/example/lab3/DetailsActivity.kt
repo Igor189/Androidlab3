@@ -15,20 +15,18 @@ class DetailsActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val artist = intent.getStringExtra("artist")
         val year = intent.getIntExtra("year", 0)
-        val description = intent.getStringExtra("description") // получите новое свойство
+        val description = intent.getStringExtra("description")
 
-        // Найдите TextViews и установите текст
         val titleTextView = findViewById<TextView>(R.id.titleTextView)
         val artistTextView = findViewById<TextView>(R.id.artistTextView)
         val yearTextView = findViewById<TextView>(R.id.yearTextView)
-        val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView) // новый TextView для описания
+        val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView)
 
         titleTextView.text = title
         artistTextView.text = artist
         yearTextView.text = year.toString()
-        descriptionTextView.text = description // установите текст для описания
+        descriptionTextView.text = description
 
-        // добавьте обработчик для кнопки, который запускает неявный Intent
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=$title $artist"))
