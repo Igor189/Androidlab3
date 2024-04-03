@@ -1,6 +1,7 @@
 package com.example.lab3
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -21,21 +22,20 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
 
             if (twoPane) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.detailsContainer, DetailsFragment())
-                    .commitNow()
+                val firstAlbum = AlbumListFragment().getMusicAlbums()[0]
+                showDetails(firstAlbum)
             }
         }
     }
 
     fun showDetails(album: MusicAlbum) {
-        if (twoPane) {
-            val detailsFragment = DetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable("album", album)
-                }
+        val detailsFragment = DetailsFragment().apply {
+            arguments = Bundle().apply {
+                putParcelable("album", album)
             }
+        }
 
+        if (twoPane) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.detailsContainer, detailsFragment)
                 .commit()

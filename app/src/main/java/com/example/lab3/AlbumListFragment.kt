@@ -35,7 +35,7 @@ class AlbumListFragment : Fragment() {
 
 
 
-    private fun getMusicAlbums(): List<MusicAlbum> {
+    public fun getMusicAlbums(): List<MusicAlbum> {
         return listOf(
             MusicAlbum("Album 1", "Artist 1", 2020, "aa"),
             MusicAlbum("Album 2", "Artist 2", 2018, "bb"),
